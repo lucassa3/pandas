@@ -49,6 +49,23 @@ With pandas, column selection is done by passing a list of column names to your 
 Calling the DataFrame without the list of column names would display all columns (akin to SQL's
 ``*``).
 
+There is also the possibility of selecting calculated columns with pandas. An example of this type of query in SQL would be:
+
+.. code-block:: sql
+
+    SELECT tip/total_bill
+    AS tip_rate
+    FROM tips;
+ 
+With pandas, selecting calculated columns could be done in this way:
+
+.. ipython:: python
+
+    tips.assign(
+        tip_rate = tips['tip'] / tips['total_bill']
+    )
+
+
 WHERE
 -----
 Filtering in SQL is done via a WHERE clause.
